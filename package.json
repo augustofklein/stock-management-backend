@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/augustofklein/stock-management-backend/issues"
   },
-  "homepage": "https://github.com/augustofklein/stock-management-backend#readme"
+  "homepage": "https://github.com/augustofklein/stock-management-backend#readme",
+  "dependencies": {
+    "fastify": "^4.26.2"
+  }
 }
