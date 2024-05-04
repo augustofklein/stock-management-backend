@@ -1,5 +1,5 @@
 import { fastify } from "fastify";
-import { DatabasePostgres } from "./database-postgres";
+import { DatabasePostgres } from "../database-postgres";
 
 const server = fastify();
 
