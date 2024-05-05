@@ -1,8 +1,4 @@
-import { sql } from './src/db.js';
-
-sql`DROP TABLE ID EXISTS products;`.then(() => {
-    console.log('Table deleted!')
-})
+import { sql } from './db.js';
 
 sql`
     CREATE TABLE products (
