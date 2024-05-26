@@ -1,4 +1,3 @@
-import { randomUUID } from 'node:crypto'
 import { sql } from './db.js'
 
 export class DatabasePostgres {
@@ -16,15 +15,15 @@ export class DatabasePostgres {
     }
 
     async create(product) {
-        const { id, description, stock } = product;
+        const { id, description, stock, image_data } = product;
 
-        await sql`INSERT INTO products (id, description, stock) VALUES (${id}, ${description}, ${stock})`
+        await sql`INSERT INTO products (id, description, stock, image_data) VALUES (${id}, ${description}, ${stock}, ${image_data})`
     }
 
     async update(id, product) {
-        const { description, stock } = product;
+        const { description, stock, image_data } = product;
 
-        await sql`UPDATE products SET description = ${description}, stock = ${stock} WHERE id = ${id}`
+        await sql`UPDATE products SET description = ${description}, stock = ${stock}, image_data = ${image_data} WHERE id = ${id}`
     }
 
     async delete(id) {
