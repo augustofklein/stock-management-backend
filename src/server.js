@@ -7,31 +7,36 @@ const database = new DatabasePostgres();
 
 server.post('/products', async (request, reply) => {
 
-    const { id, description } = request.body;
+    const { id, description, stock } = request.body;
 
     await database.create({
         id,
-        description
+        description,
+        stock
     })
 
     return reply.status(201).send();
 })
 
-server.get('/products', (request) => {
+server.get('/products', async (request, reply) => {
 
     const search = request.query.search;
 
-    const products = database.list(search);
-
-    return products;
+    try{
+        const products = await database.list(search);
+        reply.send(products);
+    } catch(error) {
+        reply.status(500).json({ error: 'An error occurred while fetching products' });
+    }
 })
 
 server.put('/products/:id', async (request, reply) => {
     const productId = request.params.id;
-    const { description } = request.body;
+    const { description, stock } = request.body;
 
     await database.update(productId, {
         description,
+        stock
     })
 
     return reply.status(204).send();

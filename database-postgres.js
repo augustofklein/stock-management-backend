@@ -7,23 +7,24 @@ export class DatabasePostgres {
         let products
 
         if(search) {
-            products = await sql`select * from products where title ilike "${'%' + search + '%'}"`
+            products = await sql`select * from products where description ilike "${'%' + search + '%'}"`
         } else {
             products = await sql`select * from products`
         }
+
+        return products;
     }
 
     async create(product) {
-        const productId = randomUUID();
-        const { description } = product;
+        const { id, description, stock } = product;
 
-        await sql`INSERT INTO products (id, description) VALUES (${productId}, ${description})`
+        await sql`INSERT INTO products (id, description, stock) VALUES (${id}, ${description}, ${stock})`
     }
 
     async update(id, product) {
-        const { description } = video;
+        const { description, stock } = product;
 
-        await sql`UPDATE products SET description = ${description} WHERE id = ${ide}`
+        await sql`UPDATE products SET description = ${description}, stock = ${stock} WHERE id = ${id}`
     }
 
     async delete(id) {
