@@ -7,13 +7,12 @@ const database = new DatabasePostgres();
 
 server.post('/products', async (request, reply) => {
 
-    const { id, description, stock, image_data } = request.body;
+    const { id, description, stock } = request.body;
 
     await database.create({
         id,
         description,
-        stock,
-        image_data
+        stock
     })
 
     return reply.status(201).send();
@@ -33,12 +32,11 @@ server.get('/products', async (request, reply) => {
 
 server.put('/products/:id', async (request, reply) => {
     const productId = request.params.id;
-    const { description, stock, image_data } = request.body;
+    const { description, stock } = request.body;
 
     await database.update(productId, {
         description,
-        stock,
-        image_data
+        stock
     })
 
     return reply.status(204).send();
