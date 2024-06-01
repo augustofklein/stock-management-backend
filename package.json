@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/augustofklein/stock-management-backend#readme",
   "dependencies": {
+    "@fastify/cors": "^9.0.1",
     "@neondatabase/serverless": "^0.9.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "fastify": "^4.26.2",
+    "fastify": "^4.27.0",
     "pg": "^8.11.5",
     "postgres": "^3.4.4"
   },
