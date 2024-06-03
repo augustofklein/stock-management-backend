@@ -23,7 +23,7 @@ export class DatabasePostgres {
     async update(id, product) {
         const { description, stock } = product;
 
-        await sql`UPDATE products SET description = ${description}, stock = ${stock} WHERE id = ${id}`
+        await sql`UPDATE products SET description = ${description} WHERE id = ${id}`
     }
 
     async delete(id) {

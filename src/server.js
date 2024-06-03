@@ -39,11 +39,10 @@ server.get('/products', async (request, reply) => {
 
 server.put('/products/:id', async (request, reply) => {
     const productId = request.params.id;
-    const { description, stock } = request.body;
+    const { description } = request.body;
 
     await database.update(productId, {
-        description,
-        stock
+        description
     })
 
     return reply.status(204).send();
